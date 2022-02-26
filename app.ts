@@ -6,10 +6,12 @@ import "reflect-metadata"; // Need this for decorators
 
 import Logger from "./loaders/logger";
 
+import loadDependencies from "./loaders/index";
+
 async function startServer() {
   const app = express();
 
-  await require("./loaders/index").default({ expressApp: app });
+  await loadDependencies({ expressApp: app });
 
   app
     .listen(config.port, () => {

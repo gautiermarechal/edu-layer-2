@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import routes from "../api";
+import routes from "../api/index";
 import config from "../config";
 export default ({ app }: { app: express.Application }) => {
   app.get("/", (req, res) => {

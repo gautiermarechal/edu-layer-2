@@ -1,6 +1,7 @@
 import Logger from "./logger";
 import pool from "./postgres";
 import expressLoader from "./express";
+import dependencyInjector from "./dependencyInjector";
 
 export default async (prop: { expressApp: any }) => {
   pool.connect((err, client, release) => {
@@ -19,4 +20,7 @@ export default async (prop: { expressApp: any }) => {
 
   expressLoader({ app: prop.expressApp });
   Logger.info("Express loaded");
+
+  dependencyInjector();
+  Logger.info("Dependency Injector Loaded");
 };

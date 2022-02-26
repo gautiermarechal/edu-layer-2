@@ -24,7 +24,7 @@ export default {
     databasePort: parseInt(process.env.DB_PORT || "5432"),
   },
 
-  jwtSecret: process.env.JWT_SECRET as Secret,
+  jwtSecret: process.env.JWT_SECRET,
   jwtAlgorithm: process.env.JWT_ALGO,
 
   api: {
