@@ -32,9 +32,8 @@ export default (app: Router) => {
       const logger: Logger = Container.get("logger");
       logger.debug("Calling Create Class endpoint with body: %o", req.body);
       try {
-        const userEnrollmentServiceInstance =
-          Container.get<ClassService>(ClassService);
-        const { id } = await userEnrollmentServiceInstance.CreateClass(
+        const classServiceInstance = Container.get<ClassService>(ClassService);
+        const { id } = await classServiceInstance.CreateClass(
           req.body as IClass
         );
         return res.status(201).json({ id });

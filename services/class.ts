@@ -1,9 +1,8 @@
 import { Inject, Service } from "typedi";
 import { Logger } from "winston";
-import IUserEnrollment from "../interfaces/inputs/IUserEnrollment";
 import { v4 as uuidv4 } from "uuid";
 import pool from "../loaders/postgres";
-import createUserEnrollment from "../db-commands/userEnrollment/createUserEnrollment";
+import createClass from "../db-commands/class/createClass";
 import IClass from "../interfaces/inputs/IClass";
 
 @Service()
@@ -37,10 +36,7 @@ export default class ClassService {
         totalAmoutDollar,
       ];
 
-      const dbResponse = await pool.query(
-        createUserEnrollment.commandSQL,
-        values
-      );
+      const dbResponse = await pool.query(createClass.commandSQL, values);
       const newClassObject = await dbResponse.rows[0];
       this.logger.silly("New class created!✅");
       return newClassObject;
